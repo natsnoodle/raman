@@ -11,13 +11,12 @@ import pandas as pd
 import os
 import glob
 
-exp= '05-31-21'
-
+exp= '05-31-21'#the file folder, we do it by date
 
 
 
 fnames=[]
-Rfolder = sorted(glob.glob('/Users/natalies/Documents/CU_mbpv/Owen_mbpv/data/Raman/'+exp+'/*.txt') )
+Rfolder = sorted(glob.glob('/Users/natalies/Documents/CU_mbpv/Owen_mbpv/data/Raman/'+exp+'/*.txt') ) # this is where it is in my computer
 
 for f in Rfolder:
     name1=(os.path.basename(f))[:-4]
@@ -26,4 +25,4 @@ for f in Rfolder:
 
 DF= pd.concat((pd.read_csv(f, delimiter='\t', header=None, usecols=[1]) for f in Rfolder), axis=1)
 DF.columns = fnames
-DF.to_csv(exp+'DF.csv')
+DF.to_csv(exp+'DF.csv') #this is going to make a csv in the path
